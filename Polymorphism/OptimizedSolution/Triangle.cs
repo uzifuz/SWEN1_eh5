@@ -6,22 +6,20 @@ namespace Bif3.Swe1.Oop.Polymorphism.OptimizedSolution
 {
     class Triangle : Shape, IShapeComposition
     {
-        private int x2, y2, x3, y3;
+        private int _x2, _y2, _x3, _y3;
         public Triangle(int x, int y, int x2, int y2, int x3, int y3) : base(x, y)
         {
-            this.x2 = x2;
-            this.y2 = y2;
-            this.x3 = x3;
-            this.y3 = y3;
+            _x2 = x2;
+            _y2 = y2;
+            _x3 = x3;
+            _y3 = y3;
         }
         public double GetArea()
         {
-            throw new NotImplementedException();
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
+            return
+                (MathF.Abs((MathF.Sqrt(_x * _x + _y * _y) - MathF.Sqrt(_x2 * _x2 + _y2 * _y2)))
+               * MathF.Abs((MathF.Sqrt(_x * _x + _y * _y) - MathF.Sqrt(_x3 * _x3 + _y3 * _y3))))
+               / 2;
         }
 
         public double GetPerimeter()
@@ -31,7 +29,7 @@ namespace Bif3.Swe1.Oop.Polymorphism.OptimizedSolution
 
         public void PrintShapeType()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("I'm a triangle");
         }
 
         public override void ShowOrigin()
